@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./custom.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet" />
+  <title>Javascript Drum Kit</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="drumkit">
+      <div id="key-65" class="drum-item">
+        <h1>A</h1>
+        <p>CLAP</p>
+      </div>
+      <div id="key-83" class="drum-item">
+        <h1>S</h1>
+        <p>HIHAT</p>
+      </div>
+      <div id="key-68" class="drum-item">
+        <h1>D</h1>
+        <p>KICK</p>
+      </div>
+      <div id="key-70" class="drum-item">
+        <h1>F</h1>
+        <p>OPENHAT</p>
+      </div>
+      <div id="key-71" class="drum-item">
+        <h1>G</h1>
+        <p>BOOM</p>
+      </div>
+      <div id="key-72" class="drum-item">
+        <h1>H</h1>
+        <p>RIDE</p>
+      </div>
+      <div id="key-74" class="drum-item">
+        <h1>J</h1>
+        <p>SNARE</p>
+      </div>
+      <div id="key-75" class="drum-item">
+        <h1>K</h1>
+        <p>TOM</p>
+      </div>
+      <div id="key-76" class="drum-item">
+        <h1>L</h1>
+        <p>LINK</p>
+      </div>
+    </div>
+  </div>
+  <audio id="sound-65" src="sounds/clap.wav"></audio>
+  <audio id="sound-83" src="sounds/hihat.wav"></audio>
+  <audio id="sound-68" src="sounds/kick.wav"></audio>
+  <audio id="sound-70" src="sounds/openhat.wav"></audio>
+  <audio id="sound-71" src="sounds/boom.wav"></audio>
+  <audio id="sound-72" src="sounds/ride.wav"></audio>
+  <audio id="sound-74" src="sounds/snare.wav"></audio>
+  <audio id="sound-75" src="sounds/tom.wav"></audio>
+  <audio id="sound-76" src="sounds/tink.wav"></audio>
+</body>
+<script>
+  const playing = (e) => {
+    const item = document.querySelector(`#key-${e.keyCode}`);
+    const audio = document.querySelector(`#sound-${e.keyCode}`);
+    if (!audio) {
+      return;
+    }
+    item.classList.add("active");
+    audio.currentTime = 0;
+    audio.play();
+    setTimeout(() => {
+      item.classList.remove("active");
+    }, 200);
+  };
+  window.addEventListener("keydown", playing);
+</script>
+
+</html>
